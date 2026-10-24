@@ -1,0 +1,37 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{verification}[2026/09/26 Evidence card formatting]
+
+\RequirePackage[dvipsnames]{xcolor}
+\RequirePackage{booktabs}
+\RequirePackage{fancyvrb}
+\RequirePackage{hyperref}
+
+\providecommand{\vpaperref}[1]{\texttt{\detokenize{#1}}}
+\newcommand{\vtodo}{\textcolor{BrickRed}{\texttt{[TO FILL]}}}
+
+\newcommand{\vfield}[1]{\par\medskip\noindent\textbf{#1}\par\smallskip}
+\newcommand{\vpaper}{%
+  \vfield{Paper lines}%
+  This card relies on the following lines.  Before using it, compare them
+  with the current source.  If they differ, reread only this card.\par\smallskip}
+\newcommand{\vstep}{\vfield{Expanded step}}
+\newcommand{\vuse}{\vfield{Where the hypotheses are used}}
+\newcommand{\vlocator}{\vfield{Locator}}
+\newcommand{\vsource}{\vfield{Source text}}
+\newcommand{\vdict}{\vfield{Notation map}}
+\newcommand{\vgap}{\vfield{Gap}}
+\newcommand{\vtest}{\vfield{Tests}}
+\newcommand{\vopen}{\vfield{Not settled}}
+\newcommand{\vproblem}{\vfield{Open problems}}
+\newcommand{\vlog}{\vfield{Log}}
+
+\DefineVerbatimEnvironment{paperquote}{Verbatim}{fontsize=\small,frame=single}
+\newenvironment{sourcequote}{\begin{quote}\itshape}{\end{quote}}
+
+\newenvironment{vcard}[3]
+  {\clearpage
+   \begingroup\raggedright
+   \section{#3}\label{card:#1}
+   \noindent\textbf{Target}\par\smallskip
+   \vpaperref{#2}\par}
+  {\par\endgroup}
