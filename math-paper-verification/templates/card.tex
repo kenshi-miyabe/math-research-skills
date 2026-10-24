@@ -1,6 +1,7 @@
 % \usepackage{verification} が必要．このファイルは \input されるcardの例．
 % 実際の Paper lines と Source text は，原稿・文献から逐語転記すること．
-\begin{vcard}{C-semantic-title}{target-label}{検証対象の短い題名}
+\begin{vcard}{C-semantic-title}{target-label (file.tex @ abc1234)}{検証対象の短い題名}
+\vcategory{C1}
 \vpaper
 \begin{paperquote}
 [PASTE VERBATIM PAPER LINES HERE]
@@ -10,12 +11,14 @@
 \vlocator
 % C1/C2: 出典・版・頁等．未確認情報は推測しない．
 \vsource
+% 原文未入手の場合のみ次行を残す．
 \vtodo
 \vgap
 % C1/C2: sourceと必要なstatementとの差．
-% 必要なら通常の段落として追記する（専用マクロはない）:
-% \par\noindent\textbf{Dependencies.} 前提となるlabel・card ID・文献のLocator．
-% \par\noindent\textbf{Interface check.} 要求条件／引用元の結論／対象での照合／未確認事項．
+\vdeps
+% 任意．前提となるlabel・card ID・文献のLocator．
+\vinterface
+% 任意．要求条件／引用元の結論／対象での照合／未確認事項．
 \vtest
 % 実際に行ったtestsだけ．
 \vopen
