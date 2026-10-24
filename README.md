@@ -55,5 +55,8 @@ paper.texを近隣分野の数学者向けに，全体の編集レビューを�
 - [gyf9712/stat-writing-skills](https://github.com/gyf9712/stat-writing-skills)
 - [haruhisa-enomoto/math-paper-skills](https://github.com/haruhisa-enomoto/math-paper-skills)
 
-参照した固定版と対象ファイルは，各参照資料に記載している．
 専用の実行基盤・外部スクリプトを導入せず，本リポジトリの運用向けに記述している．
+
+## 参考文献
+
+- Bjorn Poonen, [Practical Suggestions for Mathematical Writing](https://math.mit.edu/~poonen/papers/writing.pdf)，2026年1月6日付．[全65項目との照合記録](docs/poonen-writing-crosswalk.md)は改訂時の作業記録であり，通常のSkill実行では読み込まない．
