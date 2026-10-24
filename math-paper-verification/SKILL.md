@@ -18,6 +18,8 @@ description: 数学論文やMaster Expositionの定理・証明を検証し，�
 - 研究上の一般化は `Open problems`，現在の主張の正しさに関わる未解決問題は `TODO` と区別する．
 - 特定プロジェクトに存在する構成規則があれば尊重する．`references/master-exposition-example.md` は個別プロジェクトの**例**であり，記載されたメインファイル名やディレクトリ名を他の論文に強制しない．
 
+仮定の共有・変更，証明の修復，過去の問題の再確認を扱う場合は `references/assumptions-and-repair.md` を読む．定理ごとの使用条件，修復で主張が変わったか，問題を解消した根拠を既存cardと対応づける．
+
 ## 作業手順
 
 1. **対象を特定する**：主張・証明のlabel，参照する原稿ファイルと版・commit，必要なら外部文献の実際に入手した版を特定する．既存の `verification/` と `cards/` を確認し，重複カードを作らない．
@@ -26,7 +28,7 @@ description: 数学論文やMaster Expositionの定理・証明を検証し，�
 4. **証拠を調べる**：証明の欠けた操作を根拠付きで展開する．引用は原文，記号対応，必要な結論との差を比較する．必要に応じて小さい例，反例探索，独立な計算を行い，実行した範囲・パラメータを残す．失敗，未入手，未確認を区別する．
 5. **カードを作成・更新する**：原則card 1枚=1ファイル．IDは意味に基づく恒久名でsection番号を含めない．`Target`，原稿から**逐語コピー**した `Paper lines`，日付入りで発見内容を書く `Log` は必須．C1/C2は `Locator`，逐語の `Source text`，`Gap` が必須．C3は原則 `Expanded step` を記す．必要な任意欄だけ追加する．
 6. **中央ファイルを同期する**：`index.md` の target label→card ID対応，必要なら `notation.md`，中央 `TODO list`，`Suggestions`，`Open problems`を更新する．`Not settled` は中央TODOと同期する．候補を処理したら `to_verify.md` を更新する．
-7. **改訂に追随する**：保存した `Paper lines` と現行の原稿本文を比較する．差異があれば該当カード・依存先のみ再確認し，`Log` に変更と得られた知見を残す．節移動でcard IDは変えない．原稿から削除された結果でも再利用価値のある証拠は保存する．
+7. **改訂に追随する**：保存した `Paper lines` と現行の原稿本文を比較し，前提となる定義・補題・文献の変更も確認する．影響するカードから下流の依存関係をたどって再確認し，未確認の間は `Not settled` と中央TODOに残す．`Log` に変更と得られた知見を残す．節移動でcard IDは変えない．原稿から削除された結果でも再利用価値のある証拠は保存する．
 8. **報告する**：新規・更新card，確認した根拠，未解決TODO，未入手資料，実施したtests，変更したファイルを短く報告する．「検証済み」という総括だけで済ませない．
 
 ## 不可欠な制約
@@ -39,6 +41,8 @@ description: 数学論文やMaster Expositionの定理・証明を検証し，�
 - 出典の逐語記載は，作業用の参照原文の範囲に留め，公に再配布する場合の著作権・ライセンスに注意する．
 
 ## 出力形式
+
+複雑な接続には任意の `Interface check`，改訂の影響追跡には `Dependencies` を用いる．再利用価値のある失敗した方針は `Log` に記録する．詳細は `references/CARD-SPEC.md` の3.13–3.14，7.3，7.6に従う．
 
 既存のプロジェクト形式を優先する．新規作成する場合，`templates/verification-layout.md` を参照する．Markdown cardには `templates/card.md` を用いる．LaTeX形式では `assets/verification.sty` の**実在する**マクロだけを用い，`templates/card.tex` を参照する．`verification.sty` に実装されていない中央管理マクロを仮定しない．
 
