@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{verification}[2026/09/26 Evidence card formatting]
+\ProvidesPackage{verification}[2026/10/25 Verification targets, methods and evidence]
 
 \RequirePackage[dvipsnames]{xcolor}
 \RequirePackage{booktabs}
@@ -10,7 +10,12 @@
 \newcommand{\vtodo}{\textcolor{BrickRed}{\texttt{[TO FILL]}}}
 
 \newcommand{\vfield}[1]{\par\medskip\noindent\textbf{#1}\par\smallskip}
-\newcommand{\vcategory}[1]{\par\noindent\textbf{Category}\quad #1\par}
+% Compatibility for existing cards only; new cards use What and How.
+\newcommand{\vcategory}[1]{\par\noindent\textbf{Legacy category}\quad #1\par}
+\newcommand{\vwhat}[1]{\vfield{What}#1\par}
+\newcommand{\vhow}[1]{\vfield{How}#1\par}
+\newcommand{\vresult}[1]{\vfield{Result}#1\par}
+\newcommand{\vevidence}{\vfield{Evidence}}
 \newcommand{\vpaper}{%
   \vfield{Paper lines}%
   This card relies on the following lines.  Before using it, compare them
@@ -20,7 +25,8 @@
   preserve mathematical claims, hypotheses and dependencies, update the
   target version and verbatim quotations and record the basis in Log;
   proof re-verification is unnecessary.  Treat any uncertain impact as
-  unverified.\par\smallskip}
+  unverified. Preserve the previous evidence and result as history, and
+  update the current Result and the main-theorem overview after re-checking.\par\smallskip}
 \newcommand{\vstep}{\vfield{Expanded step}}
 \newcommand{\vuse}{\vfield{Where the hypotheses are used}}
 \newcommand{\vlocator}{\vfield{Locator}}
