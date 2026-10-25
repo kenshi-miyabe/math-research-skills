@@ -25,7 +25,7 @@ description: 数学研究論文の英語LaTeX原稿の執筆・推敲・構成�
 - 局所的な説明・根拠・曖昧さ：`references/exposition-message.md`
 - 構成・重要度・読者負担：`references/exposition-refactor.md`
 - 出典・引用・先行研究：`references/related-work-and-audience.md`
-- Abstract・Introduction・貢献の説明：`references/claims-and-positioning.md`
+- Abstract・Introduction・Conclusion・意義と成果が開く問いの検討：`references/claims-and-positioning.md`
 - 英語・LaTeX・改稿後の確認：`references/latex-writing.md`
 - 重要な方針が定まらず著者と検討する場合：`references/author-decisions.md`
 
