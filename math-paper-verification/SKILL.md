@@ -17,13 +17,13 @@ description: 数学論文やMaster Expositionの定理・証明を検証し，�
 
 ## ワークフロー
 
-1. 原稿・版・検証目的と範囲，既存記録を特定する．Master Expositionと投稿原稿を自動的に同一視しない．writing・reviewからの候補は `to_verify.md` で重複を避けて受け取り，処理結果を残す．
+1. 原稿・版・検証目的と範囲，既存記録を特定する．Master Expositionと投稿原稿を自動的に同一視しない．writing・reviewからの未解決項目は恒久IDを付け，`verification/to_verify.md` で重複を避けて受け取る．解決済み項目はこのファイルに残さず，根拠と処理履歴はカードの `Log` 等に記録する．
 2. 主結果までの依存関係を把握し，誤りの影響が大きい箇所と数学的に壊れやすい箇所を優先する．外部引用，量化子，一様性，極限操作，計算可能性，非自明な構成に注意する．
-3. `references/verification-checks.md` の対象 V1–V5 と基本的な方法 M1–M4 を独立に選ぶ（複数可）．重要な結果では別のAI等の再検証も任意で行う．自己点検やAI同士の一致を独立性・正しさの保証としない．
+3. `references/verification-checks.md` の対象 V1–V5 と基本的な方法 M1–M4 を独立に選ぶ（複数可）．既知の結果を本書の記号で導出した箇所も対象に含め，出典の主張と照合する．文献の探索・保存と未入手資料の記録は `references/source-materials.md` に従う．重要な結果では別のAI等の再検証も任意で行う．自己点検やAI同士の一致を独立性・正しさの保証としない．
 4. 検証を実施し，`references/evidence-cards.md` に従って作業・根拠・結果・未確認事項を記録する．主要な定理の範囲と未確認箇所は一覧にする．再利用価値のある根拠だけをカード化する．
 5. 確認した版・範囲・手段，問題点と未確認事項を報告する．改訂時は変更の影響をたどり，再検証して記録と一覧を更新する．
 
 ## 出力
 
-既存の形式とcard IDを優先する．新規記録は `templates/verification-layout.md` と `templates/card.md`，LaTeXでは `templates/card.tex` と `assets/verification.sty` を使う．旧記録の移行は `references/evidence-cards.md` を参照する．
+パスはプロジェクトルートを基準とする．カードは `verification/cards/<card-ID>.tex` に書き，`verification/verification.tex` から `\input` して一括コンパイルできるようにする．Markdownのカードは新規作成せず，既存カードを更新するときは内容・ID・履歴を保ってTeXへ移し，読み込み先も更新する．`templates/verification-layout.md`，`templates/verification.tex`，`templates/card.tex`，`templates/to_verify.md` と `assets/verification.sty` を使う．既存のTeX設定・エンジンに合わせ，実在するマクロだけを用いる．追加・更新後は主ファイルをコンパイルし，成否と未解決参照を報告する．旧記録の分類の移行は `references/evidence-cards.md` を参照する．
 対象指定がなければ現在の原稿・既存記録を探し，重要箇所から着手する．原稿がなければ内容を創作せず，必要なら空のテンプレートを準備する．

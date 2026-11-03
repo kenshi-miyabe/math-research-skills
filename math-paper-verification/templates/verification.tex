@@ -1,0 +1,18 @@
+% verification/ に置き，同ディレクトリで latexmk -lualatex verification.tex を実行する．
+\documentclass{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{verification}
+% 必要なら原稿と共通のマクロ定義をここで読み込む．
+\title{Verification Notes}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+\tableofcontents
+
+% 各カードの実際のファイル名に合わせて追加・更新する．
+\input{cards/E-semantic-title.tex}
+
+% Suggestions / Open problems は必要な場合だけ節を追加する．
+% 未解決項目の一覧は to_verify.md で管理し，解決履歴は各カードのLogに残す．
+\end{document}

@@ -1,35 +1,28 @@
-# 新規プロジェクト向け推奨構成
+# Verification Notesの構成
 
-既存の形式を優先し，必要なファイルだけ使う．
+パスはプロジェクトルートを基準とする．
 
 ```text
+papers/                  # ダウンロードした論文PDF・ユーザー提供の論文PDF
+book-pages/              # ユーザー提供の本の該当ページ
 verification/
-  verification.sty      # LaTeXの場合．Skillのassetsからコピー
-  verification.tex      # LaTeXの場合．card群と中央TODO/Suggestions/Open problems
-  to_verify.md          # 未着手候補のinbox
-  index.md              # 主要定理の検証範囲・結果とcardへの対応
-  notation.md           # 必要な場合だけ記号一覧
+  verification.sty      # Skillのassetsからコピー
+  verification.tex      # templates/verification.texから作成する主ファイル
+  to_verify.md          # templates/to_verify.mdから作成．未解決項目のみ
+  index.md              # 主要定理の版・範囲・What・How・Resultとcardへの対応
   cards/
-    E-semantic-title.md # または .tex．既存のcard IDは変えない
+    E-semantic-title.tex
 ```
 
-## to_verify.md の最小形
+カードはTeXで書き，追加するたびに `verification.tex` の `\input{cards/<card-ID>.tex}` に登録する．主ファイルにはカード群と，必要なら `Suggestions`・`Open problems` の節を置く．未解決事項の中央管理は `to_verify.md` に一本化し，解決履歴はカードの `Log` に残す．
 
-```markdown
-# Active candidates
-- candidate: ...
-  target: label in file.tex @ version，範囲
-  what: V1 / V2 / V3 / V4 / V5 （判明したものだけ，複数可）
-  issue: ...
-  reason: 記録する価値・優先度
-  next check: 方法と次の確認（予定）
-  status: candidate
+新規テンプレートは日本語を含むためLuaLaTeXを使う．`verification/` を作業ディレクトリとして次を実行する．
 
-# Resolved candidates
-- YYYY-MM-DD: ... → card-created / recorded / rejected （処理理由，card IDや記録先）
+```sh
+latexmk -lualatex -interaction=nonstopmode -halt-on-error verification.tex
 ```
 
-候補の処理状態は数学的な確認結果ではない．既存の候補の書式も受け入れる．
+既存プロジェクトではエンジン・クラス・共通マクロを合わせてよいが，主ファイルから全カードを読み込み，単独でコンパイルできる状態を保つ．原稿固有のマクロを必要に応じて共有し，原稿の本文全体を読み込んで代用しない．本文のlabelを文字列で記録する場合と，Notes内のcardへの `\ref` を区別し，未定義参照を残さない．
 
 ## index.md の最小形
 
@@ -37,9 +30,8 @@ verification/
 # 主要定理の検証範囲
 | 主定理・版 | 確認対象・範囲（What） | 実施した方法（How） | Result | 根拠・card | 未確認箇所・次の確認 |
 | --- | --- | --- | --- | --- | --- |
-| thm:main / paper.tex @ abc1234 | V1・V4：引用の一様性条件 | M1：原文の主張と照合 | 部分的に確認済み | cards/E-uniformity.md | パラメータに一様な定数か未確認．証明を調べる |
+| thm:main / paper.tex @ abc1234 | V1・V4：引用の一様性条件 | M1：原文の主張と照合 | 部分的に確認済み | cards/E-uniformity.tex | パラメータに一様な定数か未確認．証明を調べる |
 | thm:main / paper.tex @ abc1234 | V2・V3・V5：残る証明と主結果までの依存 | 未実施 | 未確認 | — | 未着手 |
 ```
 
 行は対象範囲に合わせてまとめる・分ける．未着手の主要定理も載せる．全補題や全方法の組合せは列挙しない．確認済みはその版・範囲・手段に限定し，詳細な根拠はカード等に一度だけ記す．改訂で根拠が無効になり得る範囲は再検証まで未確認とし，旧版の結果は履歴に保持する．
-中央 `TODO list`，`Suggestions`，`Open problems` は既存形式を尊重する．必要なら `verification.tex` の通常のsectionまたはMarkdownの見出しで作る．

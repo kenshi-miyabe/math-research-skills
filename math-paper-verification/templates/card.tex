@@ -1,4 +1,5 @@
-% \usepackage{verification} が必要．cardは \input して使う．
+% verification/cards/<card-ID>.tex として保存し，verification.tex から \input する．
+% \usepackage{verification} が必要．card-IDはファイル名と一致させる．
 % V・Mは該当するものだけ残す（複数可）．不要な詳細欄は削除．
 \begin{vcard}{E-semantic-title}{target-label (file.tex @ abc1234), scope: ...}{検証対象の短い題名}
 % 未コミットの変更を含むなら保存版や差分も特定する．
@@ -22,12 +23,13 @@
 % \vuse
 % 仮定の使用箇所が必要な場合．
 \vlocator
-% 依存の適用を調べる場合：内部labelまたは文献・定理番号・版・ページと確認範囲．
+% 依存の適用を調べる場合：内部labelまたは文献ID・著者・題名／書名・年／版・定理／頁と確認範囲．
+% 外部文献にはDOI／URL等，入手済みならpapers/またはbook-pages/内のパスも記す．
 \vsource
 % 必要な主張の逐語引用．すぐ追える内部参照は保存版への参照でも可．
 % 原文未入手の場合のみ \vtodo と必要な確認を記す．
 % \vdict
-% 記号の読み替えが必要な場合．
+% 既知の結果を本書の記号で導出・再定式化する場合は必須．原典と本書の記号対応．
 \vgap
 % 依存先が与える結論と必要な結論との差，埋める議論・障害．
 \vdeps
@@ -39,7 +41,9 @@
 % 任意．実験・探索の方法・範囲・条件・結果・限界と再現用のコード等への参照．
 % 価値のある失敗は障害・使用した仮定・再検討条件も記す．
 \vopen
-% 未確認箇所と次の確認．対象範囲外と現在のcorrectnessに関わる問題を区別．後者は中央TODOと同期．
+% 未確認箇所と次の確認．対象範囲外と現在のcorrectnessに関わる問題を区別．
+% 後者はQ-semantic-issue等の項目IDを明記し，verification/to_verify.mdと同期．
+% 解決後は項目ID・版・根拠をLogに残して両方の未解決欄から除く．
 % \vproblem
 % 任意．元の主張の検証と区別する探索課題．
 \vlog
