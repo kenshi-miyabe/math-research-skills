@@ -5,11 +5,11 @@
 
 ## 今回変更したファイル
 
-- [執筆Skill](../math-paper-writing/SKILL.md)：参照資料への経路，局所と全体の評価，未確認状態を隠さない境界．
+- [執筆手順](../math-paper-writing/SKILL.md)：参照資料への経路，局所と全体の評価，未確認状態を隠さない境界．
 - [構成の規則](../math-paper-writing/references/exposition-refactor.md)：認知負荷の5観点，重要度に応じた詳しさ，未使用補題とAI生成原稿の扱い．
 - [説明の粒度](../math-paper-writing/references/exposition-message.md)：有益な再提示・反復を保持する判断．
 - [著者との検討](../math-paper-writing/references/author-decisions.md)（新規参照資料）：修正・提案・質問の区別，候補の説明，数学的な判断と編集上の選択の分離．
-- [レビューSkill](../math-paper-review/SKILL.md)と[実施規則](../math-paper-review/references/review-modes.md)：局所・全体・読者負担の評価，複数の改善候補，有益な反復の扱い．
+- [レビュー手順](../math-paper-review/SKILL.md)と[実施規則](../math-paper-review/references/review-modes.md)：局所・全体・読者負担の評価，複数の改善候補，有益な反復の扱い．
 
 既存の説明粒度・認知負荷・必要性の規則に統合し，独立したAI専用Skillは作らなかった．
 著者との検討の詳細は必要時のみ読む参照資料に分けた．verification，前回の照合表，READMEは今回変更していない．
